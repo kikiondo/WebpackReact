@@ -13,24 +13,24 @@ const rules = [
 
 if (isProduction) {
   rules.push({
-    test: /\.scss/,
-    use: [
-      'style-loader',
-      MiniCssExtractPlugin.loader,
-      'css-loader?minimize&sourceMap',
-      {
-        loader: 'postcss-loader',
-        options: {
-          autoprefixer: {
-            browser: ['last 2 versions']
+    test: /\.(css|scss)$/,
+        use: [
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader?minimize&sourceMap',
+          {
+            loader: 'postcss-loader',
+            options: {
+              autoprefixer: {
+                browser: ['last 2 versions']
+              },
+              sourceMap: true,
+              plugins: () => [autoprefixer]
+            }
           },
-          sourceMap: true,
-          plugins: () => [autoprefixer]
-        }
-      },
-      'resolve-url-loader',
-      'sass-loader?outputStyle=compressed&sourceMap'
-    ]
+          'resolve-url-loader',
+          'sass-loader?outputStyle=compressed&sourceMap'
+        ]
   });
 } else {
   rules.push({

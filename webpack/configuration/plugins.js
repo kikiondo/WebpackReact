@@ -1,7 +1,7 @@
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const isProduction = process.env.NODEN_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const plugins = [
   new HtmlWebPackPlugin({
