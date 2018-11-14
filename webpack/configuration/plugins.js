@@ -1,4 +1,8 @@
 import HtmlWebPackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
+const isProduction = process.env.NODEN_ENV === 'production';
+
 const plugins = [
   new HtmlWebPackPlugin({
     title: 'Finden',
@@ -6,4 +10,14 @@ const plugins = [
     filename: './index.html'
   })
 ];
+
+if (isProduction) {
+  plugins.push(
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash].css',
+      chunkFilename: '[id].css'
+    })
+  );
+}
+
 export default plugins;
